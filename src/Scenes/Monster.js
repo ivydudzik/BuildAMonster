@@ -1,12 +1,11 @@
 class Monster extends Phaser.Scene {
     constructor() {
         super("monsterScene");
-        this.my = {sprite: {}};  // Create an object to hold sprite bindings
+        this.my = { sprite: {} };  // Create an object to hold sprite bindings
 
         //Create constants for the monster location
         this.bodyX = 300;
         this.bodyY = 350;
-        
     }
 
     // Use preload to load art and sound assets before the scene starts running.
@@ -17,7 +16,7 @@ class Monster extends Phaser.Scene {
 
         // Load sprite atlas
         this.load.atlasXML("monsterParts", "spritesheet_default.png", "spritesheet_default.xml");
-        
+
         // update instruction text
         document.getElementById('description').innerHTML = '<h2>Monster.js<br>S - smile // F - show fangs<br>A - move left // D - move right</h2>'
     }
@@ -32,14 +31,20 @@ class Monster extends Phaser.Scene {
         // look in spritesheet_default.xml for the individual sprite names
         // You can also download the asset pack and look in the PNG/default folder.
         my.sprite.body = this.add.sprite(this.bodyX, this.bodyY, "monsterParts", "body_greenD.png");
+        my.sprite.mouth = this.add.sprite(this.bodyX, this.bodyY - 50, "monsterParts", "mouth_closed_fangs.png");
 
-        
+
+        var a = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+
+        a.on('down', function () {
+            my.sprite.body.x -= 1;
+        }, this);
     }
 
     update() {
         let my = this.my;    // create an alias to this.my for readability
-
-       
     }
+
+
 
 }
