@@ -129,6 +129,16 @@ class Monster extends Phaser.Scene {
         for (let sprite in my.sprite)
             my.sprite[sprite].y += this.vertSpeed;
 
+
+        // Horrifying Quick Attempt at Making the Limbs Animate During a Jump
+        // if (this.vertSpeed < 0) {
+        //     for (let sprite in my.sprite)
+        //         my.sprite[sprite].rotation += 0.1;
+        // } if (this.vertSpeed > 0) {
+        //     for (let sprite in my.sprite)
+        //         my.sprite[sprite].rotation -= 0.1;
+        // }
+
     }
 
 
